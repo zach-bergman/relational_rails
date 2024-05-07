@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* Database Schema Design: https://erd.dbdesigner.net/designer/schema/1715019500-relational-rails
