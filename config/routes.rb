@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get "/", to: "home#index"
 
   get "/stores", to: "stores#index"
+  get "/stores/new", to: "stores#new"
+  post "/stores", to: "stores#create"
 end
