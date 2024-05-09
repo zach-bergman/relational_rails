@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   #guitars
   get "/guitars", to: "guitars#index"
   get "/guitars/:id", to: "guitars#show"
+
+  #store-guitars
+  get "/stores/:store_id/guitars", to: "store_guitars#index"
 end
