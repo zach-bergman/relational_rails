@@ -3,8 +3,6 @@ require "rails_helper"
 describe "Store Show Page" do
   before(:each) do
     @store_1 = Store.create!(name: "Guitar Center", ongoing_sale: true, annual_revenue: 100000)
-    # @store_2 = Store.create!(name: "Guitar World", ongoing_sale: false, annual_revenue: 80000)
-    # @store_3 = Store.create!(name: "Happy Strings", ongoing_sale: true, annual_revenue: 50000)
   end
 
   describe "as a visitor" do
