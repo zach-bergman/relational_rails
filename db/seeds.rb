@@ -13,3 +13,6 @@
 @store_3 = Store.create!(name: "Happy Strings", ongoing_sale: true, annual_revenue: 50000)
 
 # Guitars.destroy
+
+@guitar_1 = @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
+@guitar_2 = @store_2.guitars.create!(name: "Ibanez RG470DX", used: false, price: 500)
