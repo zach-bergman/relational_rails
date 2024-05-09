@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get "/stores/new", to: "stores#new"
   post "/stores", to: "stores#create"
   get "/stores/:id", to: "stores#show"
+
+  get "/guitars", to: "guitars#index"
 end
