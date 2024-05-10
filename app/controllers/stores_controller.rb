@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   def index
-    @stores = Store.all
+    @stores = Store.sort_by_created_at
   end
 
   def show
