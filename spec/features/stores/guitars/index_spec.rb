@@ -15,7 +15,7 @@ describe "Store Guitars Index Page" do
     describe "when I visit the store-guitars index page" do
       it "shows all of the guitars being sold by store 1" do
         visit("/stores/#{@store_1.id}/guitars")
-
+        # save_and_open_page - launchy
         expect(page).to have_content("Name: #{@guitar_1.name}")
         expect(page).to have_content("Used?: #{@guitar_1.used}")
         expect(page).to have_content("Price: $#{@guitar_1.price}")
