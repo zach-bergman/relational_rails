@@ -22,4 +22,10 @@ describe Guitar do
       expect(Guitar.display_used_guitars).to eq([@guitar_1, @guitar_3])
     end
   end
+
+  describe ".sort_by_name" do
+    it "sorts guitars alphabetically by name" do
+      expect(Guitar.sort_by_name).to eq([@guitar_1, @guitar_2, @guitar_3])
+    end
+  end
 end
