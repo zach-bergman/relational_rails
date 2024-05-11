@@ -7,6 +7,12 @@ describe Store do
     @store_3 = Store.create!(name: "Happy Strings", ongoing_sale: true, annual_revenue: 50000)
   end
 
+  # describe "validations" do
+  #   it { should validate_presense_of :name }
+  #   it { should validate_presense_of :used }
+  #   it { should validate_presense_of :price }
+  # end
+
   describe "relationship" do
     it {should have_many :guitars}
   end
