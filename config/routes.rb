@@ -16,11 +16,17 @@ Rails.application.routes.draw do
   get "/stores/new", to: "stores#new"
   post "/stores", to: "stores#create"
   get "/stores/:id", to: "stores#show"
+  get "/stores/:id/edit", to: "stores#edit"
+  patch "/stores/:id", to: "stores#update"
 
   #guitars
   get "/guitars", to: "guitars#index"
   get "/guitars/:id", to: "guitars#show"
+  get "guitars/:id/edit", to: "guitars#edit"
+  patch "guitars/:id", to: "guitars#update"
 
   #store-guitars
   get "/stores/:store_id/guitars", to: "store_guitars#index"
+  get "/stores/:store_id/guitars/new", to: "store_guitars#new"
+  post "/stores/:store_id/guitars", to: "store_guitars#create"
 end

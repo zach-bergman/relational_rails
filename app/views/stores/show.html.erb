@@ -1,6 +1,7 @@
 <h1><%= @store.name %></h1>
 
 <div class="view_info">
+  <%= link_to "Update #{@store.name}", "/stores/#{@store.id}/edit", method: :get %>
   <p>Name: <%= @store.name %></p>
   <p>Ongoing Sale?: <%= @store.ongoing_sale %></p>
   <p>Annual Revenue: <%= @store.annual_revenue %></p>

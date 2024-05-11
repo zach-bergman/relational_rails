@@ -46,5 +46,21 @@ describe "Store Show Page" do
         expect(current_path).to eq("/stores/#{@store_1.id}/guitars")
       end
     end
+
+    describe "Store Update" do
+      it "displays a link to update the store" do
+        visit("/stores/#{@store_1.id}")
+
+        expect(page).to have_link("Update #{@store_1.name}")
+      end
+
+      it "links to store edit page when link is clicked" do
+        visit("/stores/#{@store_1.id}")
+
+        click_link("Update #{@store_1.name}")
+
+        expect(current_path).to eq("/stores/#{@store_1.id}/edit")
+      end
+    end
   end
 end

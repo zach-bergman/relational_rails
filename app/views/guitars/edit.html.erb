@@ -1,0 +1,14 @@
+<h1>Update <%= @guitar.name %></h1>
+
+<%= form_with url: "/guitars/#{@guitar.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name, "Name:" %>
+  <%= form.text_field :name, value: @guitar.name, required: true %><br/>
+
+  <%= form.label :used, "Used?:" %>
+  <%= form.check_box :used %><br/>
+
+  <%= form.label :price, "Price: $" %>
+  <%= form.number_field :price, value: @guitar.price, required: true %><br/>
+
+  <%= form.submit "Update #{@guitar.name}" %>
+<% end %>

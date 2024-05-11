@@ -21,6 +21,22 @@ describe "Guitar Show Page" do
         expect(page).to have_content("Used?: #{@guitar_1.used}")
         expect(page).to have_content("Price: $#{@guitar_1.price}")
       end
+
+      describe "Guitar Update" do
+        it "displays a link to update the guitar" do
+          visit("/guitars/#{@guitar_1.id}")
+
+          expect(page).to have_link("Update #{@guitar_1.name}")
+        end
+
+        it "links to guitar edit page when link is clicked" do
+          visit("/guitars/#{@guitar_1.id}")
+
+          click_link("Update #{@guitar_1.name}")
+
+          expect(current_path).to eq("/guitars/#{@guitar_1.id}/edit")
+        end
+      end
     end
   end
 end

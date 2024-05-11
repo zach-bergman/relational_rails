@@ -1,8 +1,14 @@
 <h1>This page is for creating new stores!</h1>
 
-<form action="/stores" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Create a new store:</p>
-  Name: <input type='text' name='name'/><br/>
-  <input type='submit'/>
-</form>
+<%= form_with url: "/stores", method: :post, local: true do |form| %>
+  <%= form.label :name, "Name:" %>
+  <%= form.text_field :name, required: true %><br/>
+
+  <%= form.label :ongoing_sale, "Ongoing Sale?:" %>
+  <%= form.check_box :ongoing_sale, required: true %><br/>
+
+  <%= form.label :annual_revenue, "Annual Revenue:" %>
+  <%= form.number_field :annual_revenue, required: true %><br/>
+
+  <%= form.submit "Create Store" %>
+<% end %>

@@ -1,7 +1,9 @@
 <h1>Current Store: <%= @store.name %></h1>
 
+<%= link_to "Create Guitar", "/stores/#{@store.id}/guitars/new" %><br/>
+
 <% @guitars.each do |guitar| %>
   <h3>Name: <%= guitar.name %></h3>
   <h3>Used?: <%= guitar.used %></h3>
   <h3>Price: $<%= guitar.price %></h3>
-  <% end %>
+<% end %>
