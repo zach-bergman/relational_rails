@@ -25,7 +25,7 @@ describe "Stores Index Page" do
 
       it "orders the stores by most recently created" do
         visit("/stores")
-        save_and_open_page
+        
         expect(@store_3.name).to appear_before(@store_2.name)
         expect(@store_2.name).to appear_before(@store_1.name)
       end
@@ -36,6 +36,22 @@ describe "Stores Index Page" do
         expect(page).to have_content(@store_3.created_at)
         expect(page).to have_content(@store_2.created_at)
         expect(page).to have_content(@store_1.created_at)
+      end
+
+      describe "Store Creation" do
+        it "displays a link to create a new store record" do
+          visit("/stores")
+
+          expect(page).to have_link("New Store")
+        end
+
+        it "links to /stores/new when link is clicked on" do
+          visit("/stores")
+
+          click_link("New Store")
+
+          expect(page).to have_current_path("/stores/new")
+        end
       end
     end
   end
