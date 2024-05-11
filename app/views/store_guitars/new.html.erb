@@ -1,0 +1,14 @@
+<h1>Create a new guitar for <%= @store.name %></h1>
+
+<%= form_with url: "/stores/#{@store.id}/guitars", method: :post, local: true do |form| %>
+  <%= form.label :name, "Name:" %>
+  <%= form.text_field :name, required: true %><br/>
+
+  <%= form.label :used, "Used?:" %>
+  <%= form.check_box :used %><br/>
+
+  <%= form.label :price, "Price:" %>
+  <%= form.number_field :price, required: true %><br/>
+
+  <%= form.submit "Create Guitar for #{@store.name}" %>
+<% end %>
