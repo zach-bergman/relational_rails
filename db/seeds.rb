@@ -8,11 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Guitar.destroy_all
+Store.destroy_all
+
 @store_1 = Store.create!(name: "Guitar Center", ongoing_sale: true, annual_revenue: 100000)
 @store_2 = Store.create!(name: "Guitar World", ongoing_sale: false, annual_revenue: 80000)
 @store_3 = Store.create!(name: "Happy Strings", ongoing_sale: true, annual_revenue: 50000)
-
-# Guitars.destroy
 
 @guitar_1 = @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
 @guitar_2 = @store_1.guitars.create!(name: "Ibanez RG470DX", used: true, price: 500)

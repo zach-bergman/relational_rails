@@ -22,6 +22,21 @@ describe "Stores Index Page" do
         expect(page).to have_content(@store_2.name)
         expect(page).to have_content(@store_3.name)
       end
+
+      it "orders the stores by most recently created" do
+        visit("/stores")
+        save_and_open_page
+        expect(@store_3.name).to appear_before(@store_2.name)
+        expect(@store_2.name).to appear_before(@store_1.name)
+      end
+
+      it "displays the created at timestamp with each store in the database" do
+        visit("/stores")
+
+        expect(page).to have_content(@store_3.created_at)
+        expect(page).to have_content(@store_2.created_at)
+        expect(page).to have_content(@store_1.created_at)
+      end
     end
   end
 end
