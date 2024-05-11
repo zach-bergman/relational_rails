@@ -38,8 +38,12 @@ describe "Store Show Page" do
 
       it "displays a link to a list of all guitars sold at store" do
         visit("/stores/#{@store_1.id}")
-        
+
         expect(page).to have_link("Shop #{@store_1.name}'s Guitars")
+        
+        click_link("Shop #{@store_1.name}'s Guitars")
+
+        expect(current_path).to eq("/stores/#{@store_1.id}/guitars")
       end
     end
   end
