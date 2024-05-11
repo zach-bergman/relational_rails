@@ -17,13 +17,25 @@ describe Store do
     it {should have_many :guitars}
   end
 
-  describe "::sort_by_created_at" do
+  describe ".sort_by_created_at" do
     it "can sort the stores by the created at timestamp, with the most recently created first" do
       expect(Store.sort_by_created_at).to eq([@store_3, @store_2, @store_1])
 
       store_4 = Store.create!(name: "Sweetwater", ongoing_sale: true, annual_revenue: 90000)
 
       expect(Store.sort_by_created_at).to eq([store_4, @store_3, @store_2, @store_1])
+    end
+  end
+
+  describe "#guitar_count" do
+    it "can count the number of guitars being sold" do
+      @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
+
+      expect(@store_1.guitar_count).to eq(1)
+
+      @store_1.guitars.create!(name: "Ibanez RG470DX", used: true, price: 500)
+
+      expect(@store_1.guitar_count).to eq(2)
     end
   end
 end
