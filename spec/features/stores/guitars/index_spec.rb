@@ -3,8 +3,8 @@ require "rails_helper"
 describe "Store Guitars Index Page" do
   before(:each) do
     @store_1 = Store.create!(name: "Guitar Center", ongoing_sale: true, annual_revenue: 100000)
-    @guitar_1 = @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
     @guitar_2 = @store_1.guitars.create!(name: "Ibanez RG470DX", used: true, price: 500)
+    @guitar_1 = @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
 
     @store_2 = Store.create!(name: "Guitar World", ongoing_sale: false, annual_revenue: 80000)
     @guitar_3 = @store_2.guitars.create!(name: "Epiphone Les Paul", used: false, price: 680)
@@ -53,6 +53,18 @@ describe "Store Guitars Index Page" do
         click_link("Create Guitar")
 
         expect(current_path).to eq("/stores/#{@store_1.id}/guitars/new")
+      end
+    end
+
+    describe "Sort Store's Guitars Alphabetically By Name" do
+      it "displays a link to sort all guitars alphabetically" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        expect(@guitar_2.name).to appear_before(@guitar_1.name)
+
+        click_link("Sort Alphabetically")
+
+        expect(@guitar_1.name).to appear_before(@guitar_2.name)
       end
     end
   end
