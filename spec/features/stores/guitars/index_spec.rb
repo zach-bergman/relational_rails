@@ -39,5 +39,21 @@ describe "Store Guitars Index Page" do
         expect(page).to have_content("Price: $#{@guitar_4.price}")
       end
     end
+
+    describe "Store's Guitar Creation" do
+      it "displays a link to add a guitar to the store" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        expect(page).to have_link("Create Guitar")
+      end
+
+      it "directs to Store Guitars new page when link is clicked" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        click_link("Create Guitar")
+
+        expect(current_path).to eq("/stores/#{@store_1.id}/guitars/new")
+      end
+    end
   end
 end
