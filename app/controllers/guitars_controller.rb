@@ -6,4 +6,8 @@ class GuitarsController < ApplicationController
   def show
     @guitar = Guitar.find(params[:id])
   end
+
+  def edit
+    @guitar = Guitar.find(params[:id])
+  end
 end
