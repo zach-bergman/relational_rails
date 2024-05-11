@@ -1,6 +1,6 @@
 class GuitarsController < ApplicationController
   def index
-    @guitars = Guitar.all
+    @guitars = Guitar.display_used_guitars
   end
 
   def show
