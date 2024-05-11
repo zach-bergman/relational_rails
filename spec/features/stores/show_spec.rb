@@ -3,6 +3,11 @@ require "rails_helper"
 describe "Store Show Page" do
   before(:each) do
     @store_1 = Store.create!(name: "Guitar Center", ongoing_sale: true, annual_revenue: 100000)
+    @guitar_1 = @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
+    @guitar_2 = @store_1.guitars.create!(name: "Ibanez RG470DX", used: true, price: 500)
+
+    @store_2 = Store.create!(name: "Guitar World", ongoing_sale: false, annual_revenue: 80000)
+    @guitar_3 = @store_2.guitars.create!(name: "Epiphone Les Paul", used: false, price: 680)
   end
 
   describe "as a visitor" do
@@ -19,6 +24,16 @@ describe "Store Show Page" do
         expect(page).to have_content("Name: #{@store_1.name}")
         expect(page).to have_content("Ongoing Sale?: #{@store_1.ongoing_sale}")
         expect(page).to have_content("Annual Revenue: #{@store_1.annual_revenue}")
+      end
+
+      it "displays the count of guitars being sold by the store" do
+        visit("/stores/#{@store_1.id}")
+
+        expect(page).to have_content("Stock Count: #{@store_1.guitar_count}")
+
+        visit("/stores/#{@store_2.id}")
+
+        expect(page).to have_content("Stock Count: #{@store_2.guitar_count}")
       end
     end
   end
