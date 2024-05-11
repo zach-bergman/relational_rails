@@ -25,4 +25,6 @@ Rails.application.routes.draw do
 
   #store-guitars
   get "/stores/:store_id/guitars", to: "store_guitars#index"
+  get "/stores/:store_id/guitars/new", to: "store_guitars#new"
+  post "/stores/:store_id/guitars", to: "store_guitars#create"
 end
