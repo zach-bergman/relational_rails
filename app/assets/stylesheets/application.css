@@ -50,25 +50,25 @@ nav li a:hover {
   color: goldenrod;
 }
 
-.home_index {
+.view_info {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 5px;
   border: 2px solid goldenrod
 }
 
-.home_index ul {
+.view_info ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.home_index li {
+.view_info li {
   display: inline-block;
   margin-left: 35px;
 }
 
-.home_index li a {
+.view_info li a {
   color: whitesmoke;
   display: block;
   text-align: center;
@@ -76,6 +76,6 @@ nav li a:hover {
   text-decoration: none;
 }
 
-.home_index li a:hover {
+.view_info li a:hover {
   color: goldenrod;
 }
