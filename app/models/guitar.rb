@@ -8,4 +8,8 @@ class Guitar < ApplicationRecord
   def self.display_used_guitars
     where(used: true)
   end
+
+  def self.sort_by_name
+    order(:name)
+  end
 end
