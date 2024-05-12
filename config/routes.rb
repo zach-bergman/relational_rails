@@ -18,12 +18,14 @@ Rails.application.routes.draw do
   get "/stores/:id", to: "stores#show"
   get "/stores/:id/edit", to: "stores#edit"
   patch "/stores/:id", to: "stores#update"
+  delete "/stores/:id", to: "stores#destroy"
 
   #guitars
   get "/guitars", to: "guitars#index"
   get "/guitars/:id", to: "guitars#show"
   get "guitars/:id/edit", to: "guitars#edit"
   patch "guitars/:id", to: "guitars#update"
+  delete "/guitars/:id", to: "guitars#destroy"
 
   #store-guitars
   get "/stores/:store_id/guitars", to: "store_guitars#index"
