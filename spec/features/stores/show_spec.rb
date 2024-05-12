@@ -62,5 +62,44 @@ describe "Store Show Page" do
         expect(current_path).to eq("/stores/#{@store_1.id}/edit")
       end
     end
+
+    describe "Store Delete" do
+      it "displays a delete button" do
+        visit("/stores/#{@store_1.id}")
+
+        expect(page).to have_button("Delete")
+      end
+
+      it "redirects to store index page when delete button is clicked" do
+        visit("/stores/#{@store_1.id}")
+
+        click_button("Delete")
+
+        expect(current_path).to eq("/stores")
+      end
+
+      it "the store is deleted when delete button is clicked" do
+        visit("/stores/#{@store_1.id}")
+
+        click_button("Delete")
+
+        expect(page).to_not have_content("Guitar Center")
+
+        visit("/stores")
+
+        expect(page).to_not have_content("Guitar Center")
+      end
+
+      it "deletes the stores guitars when delete button is clicked" do
+        visit("/stores/#{@store_1.id}")
+
+        click_button("Delete")
+
+        visit("/guitars")
+
+        expect(page).to_not have_content("Fender Stratocaster")
+        expect(page).to_not have_content("Ibanez RG470DX")
+      end
+    end
   end
 end
