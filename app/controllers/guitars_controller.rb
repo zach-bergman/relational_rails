@@ -18,6 +18,13 @@ class GuitarsController < ApplicationController
     redirect_to("/guitars/#{guitar.id}")
   end
 
+  def destroy
+    guitar = Guitar.find(params[:id])
+    guitar.delete
+
+    redirect_to "/guitars"
+  end
+
   def guitar_params
     params.permit(:name, :used, :price)
   end
