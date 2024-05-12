@@ -12,4 +12,8 @@ class Guitar < ApplicationRecord
   def self.sort_by_name
     order(:name)
   end
+
+  def self.show_guitars_over_price(user_price)
+    where("price > #{user_price}")
+  end
 end
