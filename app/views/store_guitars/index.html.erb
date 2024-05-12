@@ -4,6 +4,8 @@
 <%= link_to "Sort Alphabetically", "/stores/#{@store.id}/guitars?sort=alphabetically" %><br/>
 
 <% @guitars.each do |guitar| %>
+  <%= button_to "Update #{guitar.name}", "/guitars/#{guitar.id}/edit", method: :get %>
+
   <h3>Name: <%= guitar.name %></h3>
   <h3>Used?: <%= guitar.used %></h3>
   <h3>Price: $<%= guitar.price %></h3>
