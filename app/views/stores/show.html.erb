@@ -2,6 +2,7 @@
 
 <div class="view_info">
   <%= link_to "Update #{@store.name}", "/stores/#{@store.id}/edit", method: :get %>
+  <%= button_to "Delete", "/stores/#{@store.id}", method: :delete %>
   <p>Name: <%= @store.name %></p>
   <p>Ongoing Sale?: <%= @store.ongoing_sale %></p>
   <p>Annual Revenue: <%= @store.annual_revenue %></p>
