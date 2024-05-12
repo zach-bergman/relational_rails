@@ -22,6 +22,7 @@ class StoreGuitarsController < ApplicationController
     redirect_to "/stores/#{store.id}/guitars"
   end
 
+private
   def guitar_params
     params.permit(:name, :used, :price)
   end

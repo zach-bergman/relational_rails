@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   #guitars
   get "/guitars", to: "guitars#index"
+  get "/guitars/new", to: "guitars#new"
+  post "/guitars", to: "guitars#create"
   get "/guitars/:id", to: "guitars#show"
   get "guitars/:id/edit", to: "guitars#edit"
   patch "guitars/:id", to: "guitars#update"

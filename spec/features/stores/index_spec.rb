@@ -83,6 +83,10 @@ describe "Stores Index Page" do
           expect(current_path).to eq("/stores/#{@store_3.id}/edit")
         end
       end
+
+      describe "Store Delete" do
+        it "displays a delete button"
+      end
     end
   end
 end

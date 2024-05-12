@@ -3,6 +3,17 @@ class GuitarsController < ApplicationController
     @guitars = Guitar.display_used_guitars
   end
 
+  def new
+    # @stores = Store.all
+  end
+  
+  def create
+    store = @stores.last
+    guitar = store.guitars.create!(guitar_params)
+
+    redirect_to "/guitars"
+  end
+
   def show
     @guitar = Guitar.find(params[:id])
   end
@@ -25,6 +36,7 @@ class GuitarsController < ApplicationController
     redirect_to "/guitars"
   end
 
+private
   def guitar_params
     params.permit(:name, :used, :price)
   end
