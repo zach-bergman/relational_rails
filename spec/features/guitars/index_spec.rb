@@ -40,5 +40,28 @@ describe "Guitars Index Page" do
         expect(page).to_not have_content("Price: $#{@guitar_2.price}")
       end
     end
+
+    describe "Guitar Update from Index Page" do
+      it "displays an update button next to each Guitar" do
+        visit("/guitars")
+
+        expect(page).to have_button("Update #{@guitar_1.name}")
+        expect(page).to have_button("Update #{@guitar_3.name}")
+      end
+
+      it "links to Guitar edit page when button is clicked" do
+        visit("/guitars")
+
+        click_button("Update #{@guitar_1.name}")
+
+        expect(current_path).to eq("/guitars/#{@guitar_1.id}/edit")
+
+        visit("/guitars")
+
+        click_button("Update #{@guitar_3.name}")
+
+        expect(current_path).to eq("/guitars/#{@guitar_3.id}/edit")
+      end
+    end
   end
 end

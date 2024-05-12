@@ -67,5 +67,45 @@ describe "Store Guitars Index Page" do
         expect(@guitar_1.name).to appear_before(@guitar_2.name)
       end
     end
+
+    describe "Guitar Update from Stores-Guitars Index Page" do
+      it "displays an update button next to each Guitar" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        expect(page).to have_button("Update #{@guitar_1.name}")
+        expect(page).to have_button("Update #{@guitar_2.name}")
+
+        visit("/stores/#{@store_2.id}/guitars")
+
+        expect(page).to have_button("Update #{@guitar_3.name}")
+        expect(page).to have_button("Update #{@guitar_4.name}")
+      end
+
+      it "links to Guitar edit page when button is clicked" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        click_button("Update #{@guitar_1.name}")
+
+        expect(current_path).to eq("/guitars/#{@guitar_1.id}/edit")
+
+        visit("/stores/#{@store_1.id}/guitars")
+
+        click_button("Update #{@guitar_2.name}")
+
+        expect(current_path).to eq("/guitars/#{@guitar_2.id}/edit")
+
+        visit("/stores/#{@store_2.id}/guitars")
+
+        click_button("Update #{@guitar_3.name}")
+
+        expect(current_path).to eq("/guitars/#{@guitar_3.id}/edit")
+
+        visit("/stores/#{@store_2.id}/guitars")
+
+        click_button("Update #{@guitar_4.name}")
+
+        expect(current_path).to eq("/guitars/#{@guitar_4.id}/edit")
+      end
+    end
   end
 end
