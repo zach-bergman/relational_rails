@@ -27,6 +27,16 @@ class StoresController < ApplicationController
     redirect_to "/stores/#{store.id}"
   end
 
+  def destroy
+    store = Store.find(params[:id])
+    guitars = store.guitars
+
+    guitars.destroy_all
+    store.destroy
+
+    redirect_to "/stores"
+  end
+
   def store_params
     params.permit(:name, :ongoing_sale, :annual_revenue)
   end
