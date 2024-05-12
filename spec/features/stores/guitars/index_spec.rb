@@ -63,7 +63,7 @@ describe "Store Guitars Index Page" do
         expect(@guitar_2.name).to appear_before(@guitar_1.name)
 
         click_link("Sort Alphabetically")
-
+        
         expect(@guitar_1.name).to appear_before(@guitar_2.name)
       end
     end
@@ -105,6 +105,18 @@ describe "Store Guitars Index Page" do
         click_button("Update #{@guitar_4.name}")
 
         expect(current_path).to eq("/guitars/#{@guitar_4.id}/edit")
+      end
+    end
+
+    describe "Display Records with Given Threshold" do
+      it "displays a form to enter a price, only displays guitars that cost over the price entered" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        fill_in(:price, with: 600)
+        click_button("Only return records with more than price of price") #research how to do this
+
+        expect(page).to have_content("Fender Stratocaster")
+        expect(page).to_not have_content("Ibanez RG470DX")
       end
     end
   end
