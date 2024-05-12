@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "/guitars/:id", to: "guitars#show"
   get "guitars/:id/edit", to: "guitars#edit"
   patch "guitars/:id", to: "guitars#update"
+  delete "/guitars/:id", to: "guitars#destroy"
 
   #store-guitars
   get "/stores/:store_id/guitars", to: "store_guitars#index"
