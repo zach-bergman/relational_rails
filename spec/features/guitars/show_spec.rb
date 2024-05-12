@@ -37,6 +37,34 @@ describe "Guitar Show Page" do
           expect(current_path).to eq("/guitars/#{@guitar_1.id}/edit")
         end
       end
+
+      describe "Guitar Delete" do
+        it "displays a delete button" do
+          visit("/guitars/#{@guitar_1.id}")
+  
+          expect(page).to have_button("Delete #{@guitar_1.name}")
+        end
+  
+        it "redirects to guitar index page when delete button is clicked" do
+          visit("/guitars/#{@guitar_1.id}")
+  
+          click_button("Delete #{@guitar_1.name}")
+  
+          expect(current_path).to eq("/guitars")
+        end
+  
+        it "the guitar is deleted when delete button is clicked" do
+          visit("/guitars/#{@guitar_1.id}")
+  
+          click_button("Delete")
+  
+          expect(page).to_not have_content("Fender Stratocaster")
+  
+          visit("/guitars")
+  
+          expect(page).to_not have_content("Fender Stratocaster")
+        end
+      end
     end
   end
 end
