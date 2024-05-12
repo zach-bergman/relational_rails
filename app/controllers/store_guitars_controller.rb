@@ -1,10 +1,11 @@
 class StoreGuitarsController < ApplicationController
   def index
     @store = Store.find(params[:store_id])
-    # @guitars = @store.guitars.sort_by_name
-
+    
     if params[:sort] == "alphabetically"
       @guitars = @store.guitars.sort_by_name
+    elsif params[:guitars_over_price]
+      @guitars = @store.guitars.show_guitars_over_price(params[:guitars_over_price])
     else
       @guitars = @store.guitars
     end
