@@ -53,6 +53,36 @@ describe "Stores Index Page" do
           expect(page).to have_current_path("/stores/new")
         end
       end
+
+      describe "Store Update from Index Page" do
+        it "displays an update button next to each Store" do
+          visit("/stores")
+
+          expect(page).to have_button("Update #{@store_1.name}")
+          expect(page).to have_button("Update #{@store_2.name}")
+          expect(page).to have_button("Update #{@store_3.name}")
+        end
+
+        it "links to Store edit page when button is clicked" do
+          visit("/stores")
+
+          click_button("Update #{@store_1.name}")
+
+          expect(current_path).to eq("/stores/#{@store_1.id}/edit")
+
+          visit("/stores")
+
+          click_button("Update #{@store_2.name}")
+
+          expect(current_path).to eq("/stores/#{@store_2.id}/edit")
+
+          visit("/stores")
+
+          click_button("Update #{@store_3.name}")
+
+          expect(current_path).to eq("/stores/#{@store_3.id}/edit")
+        end
+      end
     end
   end
 end
