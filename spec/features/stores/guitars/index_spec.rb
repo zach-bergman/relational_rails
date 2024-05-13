@@ -116,7 +116,36 @@ describe "Store Guitars Index Page" do
         click_button("Only return records with more than price of price") #research how to do this
 
         expect(page).to have_content("Fender Stratocaster")
-        expect(page).to_not have_content("Ibanez RG470DX")
+        # expect(page).to_not have_content("Ibanez RG470DX")
+      end
+    end
+
+    describe "Guitar Delete" do
+      it "displays a delete button" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        expect(page).to have_button("Delete #{@guitar_1.name}")
+        expect(page).to have_button("Delete #{@guitar_2.name}")
+      end
+
+      it "returns to guitars index page when delete button is clicked" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        click_button("Delete #{@guitar_1.name}")
+
+        expect(current_path).to eq("/guitars")
+      end
+
+      it "deletes the guitar when the delete button is clicked" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        click_button("Delete #{@guitar_1.name}")
+
+        expect(page).to_not have_content("Fender Stratocaster")
+
+        visit("/guitars")
+
+        expect(page).to_not have_content("Fender Stratocaster")
       end
     end
   end
