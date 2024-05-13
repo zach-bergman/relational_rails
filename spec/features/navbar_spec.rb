@@ -32,7 +32,7 @@ describe "navbar" do
   it "has a link to the guitars index page" do
     visit("/")
 
-    within "navbar" do
+    within "nav" do
       expect(page).to have_link("All Guitars")
 
       click_link("All Guitars")
@@ -44,7 +44,7 @@ describe "navbar" do
   it "has a link to the stores index page" do
     visit("/")
 
-    within "navbar" do
+    within "nav" do
       expect(page).to have_link("All Stores")
 
       click_link("All Stores")

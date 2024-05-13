@@ -83,6 +83,32 @@ describe "Stores Index Page" do
           expect(current_path).to eq("/stores/#{@store_3.id}/edit")
         end
       end
+
+      describe "Store Delete" do
+        it "displays a delete button" do
+          visit("/stores")
+
+          expect(page).to have_button("Delete #{@store_1.name}")
+          expect(page).to have_button("Delete #{@store_2.name}")
+          expect(page).to have_button("Delete #{@store_3.name}")
+        end
+
+        it "returns to stores index page when delete button is clicked" do
+          visit("/stores")
+
+          click_button("Delete #{@store_1.name}")
+
+          expect(current_path).to eq("/stores")
+        end
+
+        it "deletes the store when the delete button is clicked" do
+          visit("/stores")
+
+          click_button("Delete #{@store_1.name}")
+
+          expect(page).to_not have_content("Guitar Center")
+        end
+      end
     end
   end
 end

@@ -28,4 +28,10 @@ describe Guitar do
       expect(Guitar.sort_by_name).to eq([@guitar_1, @guitar_2, @guitar_3])
     end
   end
+
+  describe ".show_guitars_over_price" do
+    it "only shows guitars that cost over price entered" do
+      expect(Guitar.show_guitars_over_price(600)).to eq([@guitar_1, @guitar_3])
+    end
+  end
 end

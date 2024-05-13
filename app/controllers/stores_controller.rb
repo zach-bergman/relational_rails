@@ -36,7 +36,8 @@ class StoresController < ApplicationController
 
     redirect_to "/stores"
   end
-
+  
+private
   def store_params
     params.permit(:name, :ongoing_sale, :annual_revenue)
   end

@@ -3,10 +3,17 @@
 <%= link_to "Create Guitar", "/stores/#{@store.id}/guitars/new" %><br/>
 <%= link_to "Sort Alphabetically", "/stores/#{@store.id}/guitars?sort=alphabetically" %><br/>
 
-<% @guitars.each do |guitar| %>
-  <%= button_to "Update #{guitar.name}", "/guitars/#{guitar.id}/edit", method: :get %>
+<%= form_with url: "/stores/#{@store.id}/guitars", method: :get do |form| %>
+  <%= form.label :price, "Show Guitars That Cost Over:" %><br/>
+  <%= form.number_field :price, value: "$" %><br/>
+  <%= form.submit "Only return records with more than #{:price} of price"%><br/>
+<% end %>
 
+<% @guitars.each do |guitar| %>
   <h3>Name: <%= guitar.name %></h3>
   <h3>Used?: <%= guitar.used %></h3>
   <h3>Price: $<%= guitar.price %></h3>
+
+  <%= button_to "Update #{guitar.name}", "/guitars/#{guitar.id}/edit", method: :get %>
+  <%= button_to "Delete #{guitar.name}", "/guitars/#{guitar.id}", method: :delete %>
 <% end %>
