@@ -10,9 +10,10 @@
 <% end %>
 
 <% @guitars.each do |guitar| %>
-  <%= button_to "Update #{guitar.name}", "/guitars/#{guitar.id}/edit", method: :get %>
-
   <h3>Name: <%= guitar.name %></h3>
   <h3>Used?: <%= guitar.used %></h3>
   <h3>Price: $<%= guitar.price %></h3>
+
+  <%= button_to "Update #{guitar.name}", "/guitars/#{guitar.id}/edit", method: :get %>
+  <%= button_to "Delete #{guitar.name}", "/guitars/#{guitar.id}", method: :delete %>
 <% end %>
