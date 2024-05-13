@@ -79,3 +79,10 @@ nav li a:hover {
 .view_info li a:hover {
   color: goldenrod;
 }
+
+.index_info {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: 2px solid goldenrod
+}
