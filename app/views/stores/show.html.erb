@@ -3,7 +3,7 @@
 <div class="view_info">
   <p>Name: <%= @store.name %></p>
   <p>Ongoing Sale?: <%= @store.ongoing_sale %></p>
-  <p>Annual Revenue: <%= @store.annual_revenue %></p>
+  <p>Annual Revenue: <%= number_to_currency(@store.annual_revenue) %></p>
   <p>Stock Count: <%= @store.guitar_count %></p>
   <p><%= link_to "Shop #{@store.name}'s Guitars", "/stores/#{@store.id}/guitars" %></p>
 
