@@ -43,7 +43,7 @@ describe "New Guitar Page" do
 
       click_button("Create Guitar")
 
-      expec(current_path).to eq("/guitars")
+      expect(current_path).to eq("/guitars")
     end
 
     it "displays the new guitar on the index page" do
