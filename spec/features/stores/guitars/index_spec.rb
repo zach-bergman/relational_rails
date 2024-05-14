@@ -15,7 +15,7 @@ describe "Store Guitars Index Page" do
     describe "when I visit the store-guitars index page" do
       it "shows all of the guitars being sold by store 1" do
         visit("/stores/#{@store_1.id}/guitars")
-        # save_and_open_page - launchy
+
         expect(page).to have_content("Name: #{@guitar_1.name}")
         expect(page).to have_content("Used?: #{@guitar_1.used}")
         expect(page).to have_content("Price: $#{@guitar_1.price}")
@@ -113,10 +113,10 @@ describe "Store Guitars Index Page" do
         visit("/stores/#{@store_1.id}/guitars")
 
         fill_in(:price, with: 600)
-        click_button("Only return records with more than price of price") #research how to do this
-
+        click_button("Only return guitars that cost more than price")
+        
         expect(page).to have_content("Fender Stratocaster")
-        # expect(page).to_not have_content("Ibanez RG470DX")
+        expect(page).to_not have_content("Ibanez RG470DX")
       end
     end
 
