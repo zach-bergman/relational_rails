@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   #stores
   get "/stores", to: "stores#index"
   get "/stores/new", to: "stores#new"
-  post "/stores", to: "stores#create"
   get "/stores/:id", to: "stores#show"
+  post "/stores", to: "stores#create"
   get "/stores/:id/edit", to: "stores#edit"
   patch "/stores/:id", to: "stores#update"
   delete "/stores/:id", to: "stores#destroy"
@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   #guitars
   get "/guitars", to: "guitars#index"
   get "/guitars/new", to: "guitars#new"
-  post "/guitars", to: "guitars#create"
   get "/guitars/:id", to: "guitars#show"
+  post "/guitars", to: "guitars#create"
   get "guitars/:id/edit", to: "guitars#edit"
   patch "guitars/:id", to: "guitars#update"
   delete "/guitars/:id", to: "guitars#destroy"
