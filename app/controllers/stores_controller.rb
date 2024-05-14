@@ -7,7 +7,7 @@ class StoresController < ApplicationController
   end
 
   def create
-    store = Store.create!(store_params)
+    store = Store.create(store_params)
 
     redirect_to "/stores"
   end
