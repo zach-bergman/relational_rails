@@ -1,6 +1,10 @@
 class StoresController < ApplicationController
   def index
-    @stores = Store.sort_by_created_at
+    if params[:sort] == "largest_inventory"
+      @stores= Store.sort_by_largest_inventory
+    else
+      @stores = Store.sort_by_created_at
+    end
   end
 
   def new
