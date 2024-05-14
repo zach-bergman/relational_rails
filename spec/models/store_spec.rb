@@ -38,4 +38,20 @@ describe Store do
       expect(@store_1.guitar_count).to eq(2)
     end
   end
+
+  describe ".sort_by_largest_inventory" do
+    it "can sort the stores by largest inventory" do
+      @store_1.guitars.create!(name: "Ibanez RG470DX", used: true, price: 500)
+      @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
+          
+      @store_2.guitars.create!(name: "Schecter Omen", used: true, price: 750)
+
+      expect(Store.sort_by_largest_inventory).to eq([@store_1, @store_2, @store_3])
+
+      @store_2.guitars.create!(name: "Epiphone ES-333", used: true, price: 550)
+      @store_2.guitars.create!(name: "Taylor Acoustic", used: true, price: 260)
+
+      expect(Store.sort_by_largest_inventory).to eq([@store_2, @store_1, @store_3])
+    end
+  end
 end
