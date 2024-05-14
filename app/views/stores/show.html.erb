@@ -1,11 +1,12 @@
 <h1><%= @store.name %></h1>
 
 <div class="view_info">
-  <%= link_to "Update #{@store.name}", "/stores/#{@store.id}/edit", method: :get %>
-  <%= button_to "Delete", "/stores/#{@store.id}", method: :delete %>
   <p>Name: <%= @store.name %></p>
   <p>Ongoing Sale?: <%= @store.ongoing_sale %></p>
   <p>Annual Revenue: <%= @store.annual_revenue %></p>
   <p>Stock Count: <%= @store.guitar_count %></p>
   <p><%= link_to "Shop #{@store.name}'s Guitars", "/stores/#{@store.id}/guitars" %></p>
+
+  <%= link_to "Update #{@store.name}", "/stores/#{@store.id}/edit", method: :get %>
+  <%= button_to "Delete", "/stores/#{@store.id}", method: :delete %>
 </div>

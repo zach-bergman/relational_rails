@@ -4,12 +4,12 @@ class GuitarsController < ApplicationController
   end
 
   def new
-    # @stores = Store.all
   end
   
   def create
-    store = @stores.last
-    guitar = store.guitars.create!(guitar_params)
+    stores = Store.all
+    store = stores.last
+    guitar = store.guitars.create(guitar_params)
 
     redirect_to "/guitars"
   end
