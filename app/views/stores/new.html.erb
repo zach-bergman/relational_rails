@@ -1,6 +1,6 @@
 <h1>This page is for creating new stores!</h1>
 
-<%= form_with url: "/stores", method: :post, local: true do |form| %>
+<%= form_with url: "/stores", method: :post, data: { turbo: false }, local: true do |form| %>
   <%= form.label :name, "Name:" %>
   <%= form.text_field :name, required: true %><br/>
 
