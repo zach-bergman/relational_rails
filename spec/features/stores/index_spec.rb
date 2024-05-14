@@ -109,6 +109,50 @@ describe "Stores Index Page" do
           expect(page).to_not have_content("Guitar Center")
         end
       end
+
+      describe "Sort Stores by Number of Guitars" do
+        it "displays a link to sort stores by number of guitars being sold" do
+          visit("/stores")
+
+          expect(page).to have_link("Sort by Largest Inventory")
+        end
+
+        it "links back to the store index page" do
+          visit("/stores")
+
+          click_link("Sort by Largest Inventory")
+
+          expect(current_path).to eq("/stores")
+        end
+
+        it "sorts stores by number of guitars when link is clicked" do
+          @store_1.guitars.create!(name: "Ibanez RG470DX", used: true, price: 500)
+          @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
+          
+          @store_2.guitars.create!(name: "Schecter Omen", used: true, price: 750)
+
+          visit("/stores")
+
+          expect(@store_2.name).to appear_before(@store_1.name)
+
+          click_link("Sort by Largest Inventory")
+
+          expect(@store_1.name).to appear_before(@store_2.name)
+        end
+
+        it "displays a count of each stores total guitars next to the store" do
+          @store_1.guitars.create!(name: "Ibanez RG470DX", used: true, price: 500)
+          @store_1.guitars.create!(name: "Fender Stratocaster", used: false, price: 680)
+
+          @store_2.guitars.create!(name: "Schecter Omen", used: true, price: 750)
+
+          visit("/stores")
+
+          expect(page).to have_content("Inventory Count: 2")
+
+          expect(page).to have_content("Inventory Count: 1")
+        end
+      end
     end
   end
 end
