@@ -1,6 +1,6 @@
 <h1>Update <%= @guitar.name %></h1>
 
-<%= form_with url: "/guitars/#{@guitar.id}", method: :patch, local: true do |form| %>
+<%= form_with url: "/guitars/#{@guitar.id}", method: :patch, local: true, data: { turbo: false } do |form| %>
   <%= form.label :name, "Name:" %>
   <%= form.text_field :name, value: @guitar.name, required: true %><br/>
 
