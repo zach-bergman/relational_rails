@@ -10,4 +10,10 @@ class Store < ApplicationRecord
   def guitar_count
     guitars.count
   end
+
+  def self.sort_by_largest_inventory
+    all.sort_by do |store| 
+      store.guitar_count 
+    end.reverse
+  end
 end

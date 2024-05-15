@@ -23,7 +23,7 @@ describe "Store Show Page" do
 
         expect(page).to have_content("Name: #{@store_1.name}")
         expect(page).to have_content("Ongoing Sale?: #{@store_1.ongoing_sale}")
-        expect(page).to have_content("Annual Revenue: #{@store_1.annual_revenue}")
+        expect(page).to have_content("Annual Revenue: $100,000")
       end
 
       it "displays the count of guitars being sold by the store" do

@@ -109,7 +109,13 @@ describe "Store Guitars Index Page" do
     end
 
     describe "Display Records with Given Threshold" do
-      it "displays a form to enter a price, only displays guitars that cost over the price entered" do
+      it "displays a form to enter a price" do
+        visit("/stores/#{@store_1.id}/guitars")
+
+        expect(page).to have_selector("form")
+      end
+        
+      it "only displays guitars that cost over the price entered" do
         visit("/stores/#{@store_1.id}/guitars")
 
         fill_in(:price, with: 600)
