@@ -42,10 +42,10 @@ describe "Store Edit Page" do
       expect(current_path).to eq("/stores/#{@store_1.id}")
 
       expect(page).to have_content("Name: Ultimate Vibes")
-      expect(page).to have_content("Annual Revenue: 200000")
+      expect(page).to have_content("Annual Revenue: $200,000")
 
       expect(page).to_not have_content("Name: Guitar Center")
-      expect(page).to_not have_content("Annual Revenue: 100000")
+      expect(page).to_not have_content("Annual Revenue: $100,000")
     end
   end
 end

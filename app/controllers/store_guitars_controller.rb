@@ -4,13 +4,11 @@ class StoreGuitarsController < ApplicationController
     
     if params[:price].present?
       @guitars = @store.guitars.show_guitars_over_price(params[:price])
-      # require 'pry';binding.pry #look at bottom of page to see the ?= uri - look at params in pry
     elsif params[:sort] == "alphabetically"
       @guitars = @store.guitars.sort_by_name
     else
       @guitars = @store.guitars
     end
-
   end
 
   def new
